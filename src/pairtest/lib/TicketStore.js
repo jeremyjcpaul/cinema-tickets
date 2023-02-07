@@ -61,7 +61,7 @@ export default class TicketStore {
    */
   getNoSeatReservations() {
     if (this.#validated) this.validate()
-    return 0
+    return this.#adults + this.#children
   }
 
   /**
@@ -71,7 +71,7 @@ export default class TicketStore {
    */
   getTotalCost() {
     if (this.#validated) this.validate()
-    return 0
+    return (this.#adults * 20) + (this.#children * 10)
   }
 
   /**
