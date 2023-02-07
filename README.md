@@ -15,6 +15,7 @@ To run this repo:
 [] Make a payment request to the `TicketPaymentService` when a request has been successfully validated.
 [] Calculate the number of reservations (seats) based on the given request object
 [] Make a payment request to the `SeatReservationService` when a request has been successfully validated.
-[] Only allow up to 20 tickets per request
+[x] Require at least one adult ticket per request
+[x] Only allow up to 20 tickets per request
 [] Prevent child and infant tickets from being sold without an adult ticket
 [] Prevent infant tickets from being allocated a seat (i.e. 1 Adult and 1 Infant is a single reservation)
