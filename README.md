@@ -9,7 +9,7 @@ To run this repo:
 
 ## Tasks
 
-[] Test to ensure that TicketTypeRequest is immutable
+[x] Test to ensure that TicketTypeRequest is immutable
 [] Prevent requests where the id is not >= 0
 [] Calculate ticket price based on the given request object (Adult: £20, Child: £10, Infant: £0)
 [] Make a payment request to the `TicketPaymentService` when a request has been successfully validated.
