@@ -39,15 +39,15 @@ export default class TicketStore {
     this.#totalTickets += noOfTickets
 
     switch (type) {
-      case this.Adult:
+      case "ADULT":
         this.#adults += noOfTickets
         break;
 
-      case this.Child:
+      case "CHILD":
         this.#children += noOfTickets
         break;
 
-      case this.Infant:
+      case "INFANT":
         this.#infants += noOfTickets
         break;
     }
@@ -81,11 +81,17 @@ export default class TicketStore {
   validate() {
     this.#validated = true
 
+    // Prevent child and infant tickets from being sold without an adult ticket
+    if (this.#adults == 0 && (this.#children > 0 || this.#infants > 0)) {
+      throw new InvalidPurchaseException('You must buy at least one adult ticket.')
+    }
+
+    // Require at least one adult per infant
+    if (this.#adults < this.#infants) {
+      throw new InvalidPurchaseException('You must buy one adult ticket per infant.')
+    }
   }
 
-  #Adult = 'ADULT'
-  #Child = 'CHILD'
-  #Infant = 'INFANT'
   #Type = ['ADULT', 'CHILD', 'INFANT'];
 
 }
