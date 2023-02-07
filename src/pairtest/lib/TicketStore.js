@@ -25,12 +25,13 @@ export default class TicketStore {
    * @throws InvalidPurchaseException|TypeError
    */
   addTickets(type, noOfTickets) {
-    if (!this.#Type.includes(type)) {
+    if (!this.#Type.includes(type.toUpperCase())) {
       throw new TypeError(`type must be ${this.#Type.slice(0, -1).join(', ')}, or ${this.#Type.slice(-1)}`);
     }
+    type = type.toUpperCase()
 
     if (!Number.isInteger(noOfTickets) || noOfTickets <= 0) {
-      throw new TypeError('noOfTickets must be an integer greater than 0')
+      throw new TypeError('You must provide at least one ticket')
     }
 
     if (this.#totalTickets + noOfTickets > 20) {

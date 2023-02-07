@@ -26,11 +26,26 @@ describe('Ticket Service: invalid account ID tests', function () {
 	});
 });
 
+describe('Ticket Service: valid account ID tests', function () {
+	it('Account ID of 1', function () {
+		assert.doesNotThrow(() => ticketService.purchaseTickets(1, new TicketTypeRequest("ADULT", 10)))
+	});
+	it('Account ID of 999', function () {
+		assert.doesNotThrow(() => ticketService.purchaseTickets(999, new TicketTypeRequest("ADULT", 10)))
+	});
+});
+
 describe('Ticket Service: invalid ticket request tests', function () {
 	it('No ticket requests', function () {
 		assert.throws(() => ticketService.purchaseTickets(1), {
 			message: 'You must provide at least one ticket',
 		})
+		assert.throws(() => ticketService.purchaseTickets(1,
+			new TicketTypeRequest("ADULT", 0),
+			new TicketTypeRequest("CHILD", 0),
+			new TicketTypeRequest("INFANT", 0)), {
+				message: 'You must provide at least one ticket',
+			})
 	});
 	it('Too many ticket requests', function () {
 		assert.throws(() => ticketService.purchaseTickets(1,
@@ -49,15 +64,6 @@ describe('Ticket Service: invalid ticket request tests', function () {
 			new TicketTypeRequest("ADULT", 2)), {
 			message: 'You cannot purchase more than 20 tickets per transaction',
 		})
-	});
-});
-
-describe('Ticket Service: valid account ID tests', function () {
-	it('Account ID of 1', function () {
-		assert.doesNotThrow(() => ticketService.purchaseTickets(1, new TicketTypeRequest("ADULT", 10)))
-	});
-	it('Account ID of 999', function () {
-		assert.doesNotThrow(() => ticketService.purchaseTickets(999, new TicketTypeRequest("ADULT", 10)))
 	});
 });
 
