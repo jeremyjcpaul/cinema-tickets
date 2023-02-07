@@ -1,9 +1,12 @@
 # Cinema Tickets - JavaScript Assessment
+![branch main](https://github.com/jeremyjcpaul/cinema-tickets/actions/workflows/node.js.yml/badge.svg?branch=main)
 
 To run this repo:
 
 - run `npm install` to install
 - run `npm test` to run the tests
+
+There is also a GitHub workflow which runs all tests on commit.
 
 ---
 
